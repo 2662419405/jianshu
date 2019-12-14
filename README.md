@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,3 +67,65 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+=======
+# REACT简书
+
+## 技术栈
+
+MVVM
+
+核心
+
+  "react": "^16.8.6", 
+
+通讯
+
+  "axios": "^0.19.0", 
+
+数据持久
+
+  "immutable": "^4.0.0-rc.12", 
+
+   "redux-immutable": "^4.0.0", 
+
+数据管理
+
+  "react-redux": "^7.1.0", 
+
+  "redux": "^4.0.1", 
+
+  "redux-thunk": "^2.3.0", 
+
+路由
+
+  "react-router-dom": "^5.0.1", 
+
+  "react-dom": "^16.8.6", 
+
+  "react-scripts": "3.0.1", 
+
+样式
+
+sass
+
+打包工具
+
+webpack
+
+数据管理工具
+
+
+
+## 模块
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 3b804511f2d766f2a6bfef224661601c91ec3529
