@@ -17,12 +17,14 @@ class Header extends Component {
 
 const mapStateToProps = (state)=>{
     return {
-        demo: state.get('header').get('demo')
+        demo: state.get('Header').get('demo')
     }
 }
 
 const mapDispatchToProps = (Dispatch)=>{
+    return {
 
+    }
 }
 
-export default connect(null,null)(Header)
+export default connect(mapStateToProps,mapDispatchToProps)(Header)
