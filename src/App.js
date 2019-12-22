@@ -1,22 +1,20 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import store from './store/index';
+import Header from './common/header';
+import { Route, BrowserRouter } from 'react-router-dom';
 
+// 这里面配置路由和store
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <div>
+          <Header />
+          
+        </div>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

@@ -46,6 +46,10 @@ webpack
 
 
 
-## 模块
+### 使用
 
-12312313
+```js
+git clone https://github.com/2662419405/jianshu.git
+cd jianshu
+npm run build 
+```
