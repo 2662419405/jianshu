@@ -10,12 +10,26 @@ import { Link } from 'react-router-dom';
 // 使用动画组件
 import { CSSTransition } from 'react-transition-group';
 // 样式编写
-import { NavSearch,NavbarSearch, NavBottom, NavAHref, NavbarTitle, HeaderWrapper, Logo, Nav, Addition, Button, NavItem, NavbarContent, NavbarHeader } from './style';
+import {NavUlWarp,NavSearchA,NavWarpLi, NavSearch,NavbarSearch, NavBottom, NavAHref, NavbarTitle, HeaderWrapper, Logo, Nav, Addition, Button, NavItem, NavbarContent, NavbarHeader } from './style';
 
 class Header extends Component {
     render() {
 
-        const { demo, handlerClickDemo,focued ,mouseIn} = this.props;
+        const {handleValueBlur,handleChangeList,handleValueFocus, demo, defaultList,handlerClickDemo,focued ,mouseIn,page,totalPage} = this.props;
+        // 定义搜索栏每一页数组
+        const defaultArr = [];
+        // 存放每一页的数据,数组
+        if(defaultList.length){
+            for(let i = page*10;i<(page+1)*10;i++){
+                if(defaultList[i]!=null){
+                    defaultArr.push(<NavWarpLi key={defaultList[i]}>
+                        <NavSearchA>
+                            {defaultList[i]}
+                        </NavSearchA>
+                    </NavWarpLi>)
+                }
+            }
+        }
 
         return (
             <HeaderWrapper>
@@ -35,8 +49,11 @@ class Header extends Component {
                         classNames="search-node"
                         in={focued}
                     >
-
+                        {/* 获取ajax数据 */}
                         <NavSearch 
+                            onFocus={()=>{handleValueFocus(defaultList)}}
+                            // 隐藏框
+                            onBlur={handleValueBlur}
                             className = {focued?'focused':''}
                         >
 
@@ -49,7 +66,12 @@ class Header extends Component {
                         <NavbarContent>
                             <NavbarHeader>
                                 <NavbarTitle>热门搜索</NavbarTitle>
-                                <NavBottom>
+                                <NavBottom
+                                // 点击换一换切换页码数据
+                                    onClick={()=>{
+                                        handleChangeList(page,totalPage)
+                                    }}
+                                >
                                     <NavAHref>换一换</NavAHref>
                                     <Icon
                                         id="icon-ref"
@@ -58,10 +80,11 @@ class Header extends Component {
                                         }
                                     />
                                 </NavBottom>
-
-
                             </NavbarHeader>
-
+                            {/* 列表数据容器 */}
+                            <NavUlWarp>
+                                {defaultArr}
+                            </NavUlWarp>
                         </NavbarContent>
                     </NavbarSearch>
 
@@ -83,11 +106,13 @@ class Header extends Component {
 
 
 
-                这是头部的组件
+                {/* 这是头部的组件
                 <button
                     onClick={handlerClickDemo}
                 >修改头部组件的数据</button>
-                {demo}
+                {demo} */}
+
+                
             </HeaderWrapper>
         )
     }
@@ -98,13 +123,51 @@ const mapStateToProps = (state) => {
         demo: state.get('Header').get('demo'),
         // 搜索框聚焦方式
         focued:state.get('Header').get("focued"),
+        defaultList:state.get('Header').get('list'),
+        page: state.get('Header').get('page'),
+        totalPage: state.get('Header').get('totalPage'),
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        // 框架测试
         handlerClickDemo() {
             dispatch(createActions.headerChange())
+        },
+        // 隐藏数据
+        handleValueBlur(){
+            dispatch(createActions.valueChangeBlur());
+        },
+        // ajax获取数据
+        handleValueFocus(list){
+            (list.size!==undefined)&&dispatch(createActions.defaultListArr());
+            dispatch(createActions.valueChangeFocus());
+        },
+        // 切换页码数据
+        handleChangeList(page,totalPage){
+            const aHref = ReactDom.findDOMNode(document.getElementById("icon-ref"));
+            // 获取旋转图标,每次增加360度的角度
+            // 打印aHref.style.transform
+            console.log(aHref.style.transform);
+            //exec返回的是一个数组
+            // let originAngle = reg.exec(aHref.style.transform);
+            let originAngle = aHref.style.transform.replace(/[^0-9]/ig,'');
+            console.log(originAngle);
+            if(originAngle){
+                // parseInt传递两个参数的话,第二个参数是进制数
+                originAngle = parseInt(originAngle,10);
+            }else{
+                originAngle = 0;
+            }
+            aHref.style.transform = `rotate(${originAngle+360}deg)`
+            if(page<totalPage-1){
+                page++;
+                dispatch(createActions.changeValue(page));
+            }else{
+                page=0;
+                dispatch(createActions.changeValue(page));
+            }
         }
     }
 }

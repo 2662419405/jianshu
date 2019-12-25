@@ -225,5 +225,26 @@ export const Button = styled.div`
         background-color: #ea6f5a;
     }
 `
-
-
+// 容器样式
+export const NavUlWarp = styled.ul`
+    font-size: 0;
+`
+// li样式
+export const NavWarpLi = styled.li`
+    margin-right: 10px;
+    display: inline-block;
+    line-height: 28px;
+`
+// 每一项
+export const NavSearchA = styled.a`
+    padding: 2px 6px;
+    font-size: 12px;
+    color: #787878;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+    &:hover{
+        color: #333;
+        border-color: #b4b4b4;
+    }
+`
