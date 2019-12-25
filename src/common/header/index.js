@@ -86,10 +86,10 @@ class Header extends Component {
           </CSSTransition>
           {/* 中部盒子样式+搜索 */}
           <NavbarSearch
-        //   鼠标移除隐藏搜索框
+            //   鼠标移除隐藏搜索框
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className={focued || mouseIn ? 'show' : ''}
+            className={focued || mouseIn ? "show" : ""}
           >
             <NavbarContent>
               <NavbarHeader>
@@ -128,8 +128,10 @@ class Header extends Component {
 
         {/* ----------右侧登录---------- */}
         <Addition>
-          {/* ----------未加路由---------- */}
-          <Button className="sign-up">注册</Button>
+          {/* ----------开始路由页面开发---------- */}
+          <Link to={"/login"}>
+            <Button className="sign-up">注册</Button>
+          </Link>
           <Button className="write-btn">
             <Icon
               type="play-circle"
@@ -157,7 +159,7 @@ const mapStateToProps = state => {
     defaultList: state.get("Header").get("list"),
     page: state.get("Header").get("page"),
     totalPage: state.get("Header").get("totalPage"),
-    mouseIn:state.get("Header").get("mouseIn"),
+    mouseIn: state.get("Header").get("mouseIn")
   };
 };
 
@@ -172,12 +174,12 @@ const mapDispatchToProps = dispatch => {
       dispatch(createActions.valueChangeBlur());
     },
     // 移入显示搜索框
-    handleMouseEnter(){
-        dispatch(createActions.mouseEnter());
+    handleMouseEnter() {
+      dispatch(createActions.mouseEnter());
     },
     // 移出隐藏搜索框
-    handleMouseLeave(){
-        dispatch(createActions.mouseLeave());
+    handleMouseLeave() {
+      dispatch(createActions.mouseLeave());
     },
     // ajax获取数据
     handleValueFocus(list) {
