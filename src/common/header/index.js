@@ -15,7 +15,7 @@ import { NavSearch,NavbarSearch, NavBottom, NavAHref, NavbarTitle, HeaderWrapper
 class Header extends Component {
     render() {
 
-        const { demo, handlerClickDemo } = this.props;
+        const { demo, handlerClickDemo,focued ,mouseIn} = this.props;
 
         return (
             <HeaderWrapper>
@@ -33,14 +33,19 @@ class Header extends Component {
                     <CSSTransition
                         timeout={200}
                         classNames="search-node"
+                        in={focued}
                     >
 
-                        <NavSearch >
+                        <NavSearch 
+                            className = {focued?'focused':''}
+                        >
 
                         </NavSearch>
                     </CSSTransition>
                     {/* 中部盒子样式+搜索 */}
-                    <NavbarSearch >
+                    <NavbarSearch 
+                        className = {'show'}
+                    >
                         <NavbarContent>
                             <NavbarHeader>
                                 <NavbarTitle>热门搜索</NavbarTitle>
@@ -90,7 +95,9 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        demo: state.get('Header').get('demo')
+        demo: state.get('Header').get('demo'),
+        // 搜索框聚焦方式
+        focued:state.get('Header').get("focued"),
     }
 }
 
