@@ -12,13 +12,28 @@ export const valueChangeFocus = ()=>{
     };
     return arr;
 }
+// 取消聚焦
 export const valueChangeBlur = ()=>{
     const arr = {
         type:ValueTypes.VALUE_CHANGE_BLUR
     };
     return arr;
 }
-// 改变value的值
+// 移入显示搜索框
+export const mouseEnter = ()=>{
+    const arr={
+        type: ValueTypes.MOUSE_ENTER
+    };
+    return arr;
+}
+ // 移出隐藏搜索框
+export const mouseLeave = ()=>{
+    const arr={
+        type: ValueTypes.MOUSE_LEAVE
+    };
+    return arr;
+}
+// 改变角度的值
 export const changeValue = (val)=>{
     const arr = {
         type:ValueTypes.CHANGE_VALUE,
@@ -39,7 +54,6 @@ export const defaultListArr = ()=>{
 
         }).catch(()=>{
             console.log('失败');
-            
         })
     }
 }
