@@ -14,7 +14,6 @@ import {
   HomeRight
 } from "./styled";
 import * as actionCreator from './store/actionCreator';
-import Topic from './components/Topic';
 import Writer from './components/Writer';
 class Home extends PureComponent {
   // 生命周期获取数据
