@@ -8,11 +8,16 @@ import {
   HomeLeft,
   HomeRight
 } from "./styled";
-import * as actionCreator from './store/actionCreator';
+import * as actionCreator from "./store/actionCreator";
 class Home extends PureComponent {
   // 静态页面图基本可以运行
   render() {
-    const {ReturnTopMouseEnter, ReturnTopMouseLeave,showReturn,returnTopMouse } = this.props;
+    const {
+      ReturnTopMouseEnter,
+      ReturnTopMouseLeave,
+      showReturn,
+      returnTopMouse
+    } = this.props;
     return (
       <Fragment>
         <HomeWrapper>
@@ -30,13 +35,17 @@ class Home extends PureComponent {
           {/* 返回顶部功能 */}
           {showReturn ? (
             <ReturnTop onClick={this.getReturnTop}>
-                {/* 鼠标划入显示和隐藏提示信息 */}
+              {/* 鼠标划入显示和隐藏提示信息 */}
               <span
-              onMouseEnter={ReturnTopMouseEnter}
-              onMouseLeave={ReturnTopMouseLeave}
-              >^</span>
-              <div  className={returnTopMouse?'show top':'top'}>返回顶部</div>
-              <div className={returnTopMouse?'show title':'title'}></div>
+                onMouseEnter={ReturnTopMouseEnter}
+                onMouseLeave={ReturnTopMouseLeave}
+              >
+                ^
+              </span>
+              <div className={returnTopMouse ? "show top" : "top"}>
+                返回顶部
+              </div>
+              <div className={returnTopMouse ? "show title" : "title"}></div>
             </ReturnTop>
           ) : (
             ""
@@ -49,22 +58,37 @@ class Home extends PureComponent {
   getReturnTop() {
     window.scrollTo(0, 0);
   }
+  //   声明周期,组件加载完成监听进度条
+  componentDidMount() {
+    this.bindEvents();
+  }
+  bindEvents() {
+    window.addEventListener("scroll", this.props.changeSrollTopShow);
+  }
 }
 
 const mapState = state => ({
-    // 返回顶部按钮显示隐藏
+  // 返回顶部按钮显示隐藏
   showReturn: state.get("home").get("showReturn"),
-//   使用getIn方式(数组形式)获取store里面的数据
-  returnTopMouse:state.getIn(['home','returnTopMouse'])
+  //   使用getIn方式(数组形式)获取store里面的数据
+  returnTopMouse: state.getIn(["home", "returnTopMouse"])
 });
-const mapDisaptch = dispatch=>({
-    // 鼠标滑入显示提示
-    ReturnTopMouseEnter(){
-        dispatch(actionCreator.MouseReturn(true));
-    },
-    // 划出隐藏提示信息
-    ReturnTopMouseLeave(){
-        dispatch(actionCreator.MouseReturn(false));
+const mapDisaptch = dispatch => ({
+  // 鼠标滑入显示提示
+  ReturnTopMouseEnter() {
+    dispatch(actionCreator.MouseReturn(true));
+  },
+  // 划出隐藏提示信息
+  ReturnTopMouseLeave() {
+    dispatch(actionCreator.MouseReturn(false));
+  },
+  //   监听进度条
+  changeSrollTopShow() {
+    if (document.documentElement.scrollTop > 3) {
+        dispatch(actionCreator.scrollTopChange(true));
+    }else{
+        dispatch(actionCreator.scrollTopChange(false));
     }
-})
+  }
+});
 export default connect(mapState, mapDisaptch)(Home);

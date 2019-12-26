@@ -9,5 +9,12 @@ export const MouseReturn =(flag)=>{
         flag
     }
     return arr;
-
+}
+// 监听滚动条动画
+export const scrollTopChange = (flag)=>{
+    const arr = {
+        type:Value_types.SHOWRETURNTOP,
+        flag
+    }
+    return arr;
 }
