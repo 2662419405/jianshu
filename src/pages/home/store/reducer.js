@@ -7,10 +7,21 @@ const DefaultData = fromJS({
   TuijianList: [],
   WriterList: [],
   GuanzhuList: [],
-  WriterPage: 1
+  WriterPage: 1,
+  ErWeiMa: {
+    imgUrl:
+      "//cdn2.jianshu.io/assets/web/download-index-side-qrcode-cb13fc9106a478795f8d10f9f632fccf.png",
+    title: "下载简书手机App > ",
+    content: "随时随地发现和创作内容"
+  },
+  MouseLeave:false,
 });
 export default (state = DefaultData, action) => {
   switch (action.type) {
+    case Value_types.ERWEIMAENTER:
+      return state.set("MouseLeave", true);
+    case Value_types.ERWEIMALEAVE:
+      return state.set("MouseLeave", false);
     case Value_types.MOUSERETURNENTER:
       return state.set("returnTopMouse", action.flag);
     case Value_types.SHOWRETURNTOP:

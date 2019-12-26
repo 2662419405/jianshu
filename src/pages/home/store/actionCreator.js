@@ -67,3 +67,17 @@ export const getLoadMore = page => {
       });
   };
 };
+// 显示隐藏二维码
+export const Showerweima = ()=>{
+  const arr = {
+      type:Value_types.ERWEIMAENTER
+  }
+  return arr;
+}
+
+export const Hideerweima = ()=>{
+  const arr = {
+      type:Value_types.ERWEIMALEAVE
+  }
+  return arr;
+}

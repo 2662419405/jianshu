@@ -2,9 +2,8 @@ import React, { Fragment, PureComponent } from "react";
 import { connect } from "react-redux";
 // 引入topic组件
 import Topic from './components/Topic';
-// import Writer from './components/Writer'
 // import Guanzhu from './components/Guanzhu';
-// import Tuijian from './components/Tuijian'
+import Tuijian from './components/Tuijian'
 import {
   ReturnTop,
   HomeImgTop,
@@ -39,7 +38,10 @@ class Home extends PureComponent {
             </HomeLeft>
 
             {/* 右侧页面 */}
-            <HomeRight></HomeRight>
+            <HomeRight>
+              {/* 推荐页面 */}
+              <Tuijian />
+            </HomeRight>
             {showReturn}
           </Row>
           {/* 返回顶部功能 */}

@@ -193,7 +193,102 @@ export const ReturnTop = styled.div`
     }
 `
 
-// 左侧标题开始
-//标题容器
-//查看更多标题
-// 标题渲染项
+// 推荐wrapper
+export const TuijianWrapper = styled.div`
+    margin-top: -4px;
+    padding-bottom: 4px;
+    min-height: 228px;
+`
+// 推荐图片项
+export const TuijianItem = styled.a`
+    cursor: pointer;
+    color: #333;
+    text-decoration: none;
+    .pic{
+        width: 100%;
+        min-height: 50px;
+        margin-bottom: 6px;
+        border-radius: 4px;
+    }
+`
+// 二维码
+export const TuijianErWeiMa = styled.a`
+    margin-bottom: 30px;
+    padding: 10px 22px;
+    width: 100%;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+    background-color: #fff; 
+    float: left;
+    position: relative;
+    min-height: 1px;
+    .pic{
+        width: 60px;
+        height: 60px;
+        opacity: .85;
+        vertical-align: middle;
+    }
+`
+
+export const TuijianContent = styled.div`
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 7px;
+    div{
+        color:#000;
+    }
+    span{
+        margin-top: 4px;
+        font-size: 13px;
+        color: #999;
+    }
+`
+// prop和内部propdiv
+export const TuijianProp = styled.div`
+    top: 70px;
+    left: 48px;
+    opacity: 0;
+    background-color: #fff!important;
+    margin-top: -10px;
+    position: absolute;
+    z-index: 1060;
+    max-width: 276px;
+    padding: 1px;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 1.42857;
+    text-align: left;
+    text-decoration: none;
+    text-shadow: none;
+    font-size: 14px;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    transition: all .2s;
+    .popover-title{
+        padding: 10px;
+        border: none;
+    }
+    .pic{
+        width: 160px;
+        height: 160px;
+        vertical-align: middle;
+    }
+    &.show{
+        opacity: 1;
+    }
+`
+
+export const TuijianDiv = styled.div`
+    left:50%;
+    bottom: -10px;
+    content: " ";
+    margin-left: -10px;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 11px solid transparent;
+    border-bottom-width: 0;
+    border-top-color: #bbb;
+`
