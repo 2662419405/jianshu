@@ -96,3 +96,19 @@ export const ReturnTop = styled.div`
         font-size:20px;
     }
 `
+
+// 左侧标题开始
+//标题容器
+export const TopicWrapper = styled.div`
+    overflow:hidden;
+    padding: 20px 0 10px 0;
+`
+//查看更多标题
+export const TopicTitle = styled.a`
+    color:#666;
+    float:left;
+    position:relative;
+    top:6px;
+    margin-left:20px;
+`
+// 标题渲染项
