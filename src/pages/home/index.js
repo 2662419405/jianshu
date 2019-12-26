@@ -8,10 +8,11 @@ import {
   HomeLeft,
   HomeRight
 } from "./styled";
+import * as actionCreator from './store/actionCreator';
 class Home extends PureComponent {
   // 静态页面图基本可以运行
   render() {
-    const { showReturn } = this.props;
+    const {ReturnTopMouseEnter, ReturnTopMouseLeave,showReturn,returnTopMouse } = this.props;
     return (
       <Fragment>
         <HomeWrapper>
@@ -29,9 +30,13 @@ class Home extends PureComponent {
           {/* 返回顶部功能 */}
           {showReturn ? (
             <ReturnTop onClick={this.getReturnTop}>
-              <span>^</span>
-              <div>返回顶部</div>
-              <div></div>
+                {/* 鼠标划入显示和隐藏提示信息 */}
+              <span
+              onMouseEnter={ReturnTopMouseEnter}
+              onMouseLeave={ReturnTopMouseLeave}
+              >^</span>
+              <div  className={returnTopMouse?'show top':'top'}>返回顶部</div>
+              <div className={returnTopMouse?'show title':'title'}></div>
             </ReturnTop>
           ) : (
             ""
@@ -47,6 +52,19 @@ class Home extends PureComponent {
 }
 
 const mapState = state => ({
-  showReturn: state.get("home").get("showReturn")
+    // 返回顶部按钮显示隐藏
+  showReturn: state.get("home").get("showReturn"),
+//   使用getIn方式(数组形式)获取store里面的数据
+  returnTopMouse:state.getIn(['home','returnTopMouse'])
 });
-export default connect(mapState, null)(Home);
+const mapDisaptch = dispatch=>({
+    // 鼠标滑入显示提示
+    ReturnTopMouseEnter(){
+        dispatch(actionCreator.MouseReturn(true));
+    },
+    // 划出隐藏提示信息
+    ReturnTopMouseLeave(){
+        dispatch(actionCreator.MouseReturn(false));
+    }
+})
+export default connect(mapState, mapDisaptch)(Home);
