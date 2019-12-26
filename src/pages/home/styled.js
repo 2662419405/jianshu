@@ -50,6 +50,102 @@ export const HomeImgTop = styled.img.attrs( ()=>({
     z-index: 1000;
 `
 
+export const TopicWrapper = styled.div`
+    overflow:hidden;
+    padding: 20px 0 10px 0;
+`
+
+export const TopicItem = styled.a`
+    margin:0 18px 18px 0;
+    height:32px;
+    line-height:32px;
+    overflow:hidden;
+    border:1px solid #dcdcdc;
+    background-color:#f7f7f7;
+    float:left;
+    color:#000;
+    padding-right:10px;
+    vertical-align:top;
+    border-radius:4px;
+    .imgContent {
+        display:block;
+        width:32px;
+        height:32px;
+        float:left;
+        margin-right:5px;
+    }
+`
+
+export const TopicTitle = styled.a`
+    color:#666;
+    float:left;
+    position:relative;
+    top:6px;
+    margin-left:20px;
+`
+
+export const WriterList = styled.ul`
+    margin: 0;
+    padding: 0;
+    list-style: none;
+`
+export const WriterItem = styled.li`
+    position: relative;
+    width: 100%;
+    margin: 0 0 15px;
+    padding: 15px 2px 20px 0;
+    border-bottom: 1px solid #f0f0f0;
+    word-wrap: break-word;
+    line-height: 20px;
+    cursor: pointer;
+    .pic{
+        width: 150px;
+        position: absolute;
+        top: 50%;
+        margin-top: -60px;
+        right: 0;
+        border-radius: 4px;
+        border: 1px solid #f0f0f0;
+    }
+    .title{
+        margin: -7px 0 4px;
+        display: inherit;
+        font-size: 18px;
+        font-weight: 700;
+        color: #969696;
+        line-height: 1.5;
+    }
+    .content{
+        margin: 0 0 8px;
+        font-size: 13px;
+        line-height: 24px;
+        color: #999;
+    }
+    a{
+        color:#000;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+`
+export const HomeLoad = styled.a`
+    width: 100%;
+    border-radius: 20px;
+    background-color: #a5a5a5;
+    height: 40px;
+    margin: 30px auto 60px;
+    padding: 10px 15px;
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+    display: block;
+    &:hover{
+        background-color: #9b9b9b;
+        color:#fff;
+    }
+`
+
+
 // 返回顶部
 export const ReturnTop = styled.div`
     position:fixed;

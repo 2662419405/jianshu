@@ -9,7 +9,13 @@ import {
   HomeRight
 } from "./styled";
 import * as actionCreator from './store/actionCreator';
+import Topic from './components/Topic';
+import Writer from './components/Writer';
 class Home extends PureComponent {
+  // 生命周期获取数据
+  componentDidMount(){
+      this.props.handleMount();
+  }
   // 静态页面图基本可以运行
   render() {
     const {ReturnTopMouseEnter, ReturnTopMouseLeave,showReturn,returnTopMouse } = this.props;
@@ -21,7 +27,8 @@ class Home extends PureComponent {
             <HomeLeft>
               {/* 左侧图 */}
               <HomeImgTop></HomeImgTop>
-              左侧
+              <Topic/>
+              <Writer/>
             </HomeLeft>
             {/* 右侧页面 */}
             <HomeRight>右侧</HomeRight>
@@ -65,6 +72,10 @@ const mapDisaptch = dispatch=>({
     // 划出隐藏提示信息
     ReturnTopMouseLeave(){
         dispatch(actionCreator.MouseReturn(false));
+    },
+    // 获取下面的数据
+    handleMount(){
+      dispatch(actionCreator.getDefaultArr());
     }
 })
 export default connect(mapState, mapDisaptch)(Home);
