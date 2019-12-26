@@ -1,0 +1,1 @@
+export const GETDEFAULTLIST = 'get-default-list';

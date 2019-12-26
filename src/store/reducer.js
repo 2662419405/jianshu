@@ -4,8 +4,11 @@ import { combineReducers } from 'redux-immutable';
 import LoginStore from '../pages/login/store/reducer';
 // 添加Home-store
 import HomeStore from '../pages/home/store/reducer';
+// 详情页
+import DetailStore from '../pages/detail/store/reducer';
 export default combineReducers({
     Header: HeaderStore,
     login:LoginStore,
-    home:HomeStore
+    home:HomeStore,
+    detail: DetailStore,
 })

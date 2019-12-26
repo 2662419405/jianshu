@@ -16,10 +16,6 @@ import {
 import * as actionCreator from './store/actionCreator';
 import Writer from './components/Writer';
 class Home extends PureComponent {
-  // 生命周期获取数据
-  componentDidMount(){
-      this.props.handleMount();
-  }
   // 静态页面图基本可以运行
   render() {
     const {
@@ -38,15 +34,12 @@ class Home extends PureComponent {
               <HomeImgTop></HomeImgTop>
 
               {/* 左侧标题开始 */}
-              <Topic></Topic>
-
-              <Topic/>
-              <Writer/>
+              <Topic />
+              <Writer />
             </HomeLeft>
 
             {/* 右侧页面 */}
-            <HomeRight>
-            </HomeRight>
+            <HomeRight></HomeRight>
             {showReturn}
           </Row>
           {/* 返回顶部功能 */}
@@ -78,7 +71,9 @@ class Home extends PureComponent {
   //   声明周期,组件加载完成监听进度条
   componentDidMount() {
     this.bindEvents();
+    this.props.handleMount();
   }
+  // 生命周期获取数据
   bindEvents() {
     window.addEventListener("scroll", this.props.changeSrollTopShow);
   }
