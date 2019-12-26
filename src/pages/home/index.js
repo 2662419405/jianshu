@@ -13,8 +13,14 @@ import {
   HomeLeft,
   HomeRight
 } from "./styled";
-import * as actionCreator from "./store/actionCreator";
+import * as actionCreator from './store/actionCreator';
+import Topic from './components/Topic';
+import Writer from './components/Writer';
 class Home extends PureComponent {
+  // 生命周期获取数据
+  componentDidMount(){
+      this.props.handleMount();
+  }
   // 静态页面图基本可以运行
   render() {
     const {
@@ -31,9 +37,12 @@ class Home extends PureComponent {
             <HomeLeft>
               {/* 左侧图 */}
               <HomeImgTop></HomeImgTop>
+
               {/* 左侧标题开始 */}
               <Topic></Topic>
-              左侧
+
+              <Topic/>
+              <Writer/>
             </HomeLeft>
 
             {/* 右侧页面 */}
@@ -97,7 +106,12 @@ const mapDisaptch = dispatch => ({
         dispatch(actionCreator.scrollTopChange(true));
     }else{
         dispatch(actionCreator.scrollTopChange(false));
+    
     }
+  },
+  // 获取下面的数据
+  handleMount(){
+    dispatch(actionCreator.getDefaultArr());
   }
 });
 export default connect(mapState, mapDisaptch)(Home);

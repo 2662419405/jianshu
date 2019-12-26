@@ -1,18 +1,42 @@
-import React,{Fragment,PureComponent} from 'react';
-import {connect} from 'react-redux';
-import {TopicWrapper,TopicTitle} from '../styled';
+import React, { Fragment, PureComponent } from 'react'
+import { connect } from 'react-redux';
+import {
+    TopicWrapper,
+    TopicItem,
+    TopicTitle
+} from '../styled.js';
 
-class Topic extends PureComponent{
-    render(){
+class Topic extends PureComponent {
+    
+    render() {
+
+        const {list} = this.props;
+
         return (
             <Fragment>
                 <TopicWrapper>
-
-                这里是标题
-                <TopicTitle>查看更多内容 > </TopicTitle>
+                    {
+                        list.map( (item)=>{
+                            return (
+                                <TopicItem 
+                                    key={item.get('id')}>
+                                    <img className="imgContent" src={item.get('imgUrl')} alt={item.get('title')}/>
+                                    {item.get('title')}
+                                </TopicItem>
+                            )
+                        } )
+                    }
+                    <TopicTitle>查看更多内容 > </TopicTitle>
                 </TopicWrapper>
             </Fragment>
         )
     }
 }
-export default connect(null,null)(Topic);
+
+const MapStateToProps = (state)=>{
+    return{
+        list: state.get('home').get('TopicList')
+    }
+}
+
+export default connect(MapStateToProps,null)(Topic)
