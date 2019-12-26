@@ -279,7 +279,7 @@ export const TuijianProp = styled.div`
         opacity: 1;
     }
 `
-
+// 推荐DIV
 export const TuijianDiv = styled.div`
     left:50%;
     bottom: -10px;
@@ -291,4 +291,97 @@ export const TuijianDiv = styled.div`
     border: 11px solid transparent;
     border-bottom-width: 0;
     border-top-color: #bbb;
+`
+
+// 这里是关注界面
+export const GuanzjiWarpper = styled.div`
+    margin-bottom: 20px;
+    padding-top: 0;
+    font-size: 13px;
+    text-align: center;
+`
+// 关注标题+换一批
+export const GuanzhuTitle = styled.div`
+    text-align: left;
+    span{
+        font-size: 14px;
+        color: #969696;
+    }
+    .page_change{
+        float: right;
+        display: inline-block;
+        font-size: 14px;
+        color: #969696;
+    }
+    a:hover{
+        color:#000;
+    }
+`
+// 关注列表样式
+export const GuanzhuUl = styled.ul`
+    margin: 0 0 20px;
+    text-align: left;
+    list-style: none;
+`
+
+export const GuanzhuItem = styled.li`
+    margin-top: 15px;
+    line-height: 20px;
+    .avatar{
+        float: left;
+        width: 48px;
+        height: 48px;
+        margin-right: 10px;
+        display: block;
+        cursor: pointer;
+    }
+    img{
+        width: 100%;
+        height: 100%;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+    }
+    .name{
+        padding-top: 5px;
+        margin-right: 60px;
+        font-size: 14px;
+        display: block;
+        color:#000;
+    }
+    p{
+        argin-top: 2px;
+        font-size: 12px;
+        color: #969696;
+    }
+`
+// 
+export const GuanzhuChaoji =styled.a`
+    float: right;
+    margin-top: 5px;
+    padding: 0;
+    font-size: 13px;
+    color: #42c02e;
+    border-color: #42c02e;
+    font-weight: 400;
+    line-height: normal;
+    &:hover{
+        color: #42c02e;
+    }    
+`
+// 查看全部
+export const GuanzhuFotter = styled.a.attrs( ()=>({
+    href:'/'
+}) )`
+    position: absolute;
+    padding: 7px 7px 7px 12px;
+    left: 0;
+    width: 100%;
+    font-size: 13px;
+    color: #787878;
+    background-color: #f7f7f7;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    &:hover{
+        color:#787878;
+    }
 `

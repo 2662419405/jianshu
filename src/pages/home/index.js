@@ -2,7 +2,7 @@ import React, { Fragment, PureComponent } from "react";
 import { connect } from "react-redux";
 // 引入topic组件
 import Topic from './components/Topic';
-// import Guanzhu from './components/Guanzhu';
+import Guanzhu from './components/Guanzhu';
 import Tuijian from './components/Tuijian'
 import {
   ReturnTop,
@@ -41,6 +41,8 @@ class Home extends PureComponent {
             <HomeRight>
               {/* 推荐页面 */}
               <Tuijian />
+              {/* 关注界面 */}
+              <Guanzhu />
             </HomeRight>
             {showReturn}
           </Row>
